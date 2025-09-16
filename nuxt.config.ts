@@ -13,6 +13,12 @@ export default defineNuxtConfig({
   // plugins: [{ src: '~/plugins/aos.client.js', mode: 'client' }],
   app: {
     pageTransition: { name: "page", mode: "out-in" },
+      head: {
+      title: 'Adarsh Creations',
+      meta: [
+        { name: 'description', content: 'Portfolio of Adarsh Creations – About Me, Skills, Projects, and Contact.' }
+      ]
+    }
   },
 
   css: [
