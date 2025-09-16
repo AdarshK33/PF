@@ -55,15 +55,15 @@
       return {
         projects: [
           {
-            title: "Project 1",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            title: "Coming Soon...",
+             description: "Thank you",
             liveLink: "https://example.com/live-project-1",
             sourceCode: "https://github.com/example/project-1",
             image: "./assets/project1.png",
           },
           {
-            title: "Project 2",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          title: "Coming Soon...",
+            description: "Thank you",
             liveLink: "https://example.com/live-project-2",
             sourceCode: "https://github.com/example/project-2",
             image: "./assets/project2.png",
