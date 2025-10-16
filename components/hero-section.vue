@@ -41,8 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
+import { onMounted, ref } from "vue";
 const fullLine1 = "Hello";
 const fullLine2 = "I'M ADARSH";
 const fullLine3 = "I am a Software Engineer & MER[v]N FullStack Developer";
