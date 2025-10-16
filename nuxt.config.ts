@@ -17,7 +17,11 @@ export default defineNuxtConfig({
       title: 'Adarsh Creations',
       meta: [
         { name: 'description', content: 'Portfolio of Adarsh Creations – About Me, Skills, Projects, and Contact.' }
-      ]
+      ],
+          link: [
+       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap"'}
+     ]
+
     }
   },
 

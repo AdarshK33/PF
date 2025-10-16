@@ -34,5 +34,7 @@ export default {
 /* Optional: Prevent text selection */
 * {
   user-select: none;
+  
 }
+
 </style>

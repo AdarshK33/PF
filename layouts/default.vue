@@ -23,24 +23,15 @@
 <script setup>
 useHead({
   titleTemplate: 'AK',
-  link: [
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com'
-    },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
-      crossorigin: ''
-    }
-  ]
+ 
 })
 </script>
 
 <style>
-body {
-  font-family: 'Roboto';
+
+ body{
+  font-family: 'Montserrat' !important;
+  margin: 0;
+  padding: 0;
 }
-
-
 </style>

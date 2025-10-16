@@ -73,6 +73,7 @@ onMounted(() => {
 
 <style scoped>
 .custom-bg {
+  font-family: inherit;
   background-image: url('~/assets/images/adarsh.jpg'); /* Nuxt uses alias ~ for assets */
   background-size: contain; 
   background-repeat: no-repeat;
