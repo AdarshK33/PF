@@ -1,23 +1,38 @@
 <template>
-    
-    
-       <div class="mt-0  lg:mt-20 sm:mt-0 relative">
-            <Hero-section></Hero-section>
-</div>
+  <div class="mt-0 lg:mt-20 sm:mt-0 relative" @contextmenu.prevent>
+    <Hero-section></Hero-section>
+  </div>
 </template>
 
 <script>
-// Import AOS
 import AOS from 'aos'
-import 'aos/dist/aos.css' // Make sure AOS CSS is also imported
+import 'aos/dist/aos.css'
 
 export default {
   mounted() {
-    AOS.init(); // Initialize AOS when the component is mounted
-  }
-}
+    // Initialize AOS
+    AOS.init();
+
+    // Disable right-click and inspect shortcuts
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    document.addEventListener('keydown', (e) => {
+      if (
+        e.key === 'F12' || // F12
+        (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key)) || // Ctrl+Shift+I/C/J
+        (e.ctrlKey && e.key === 'U') // Ctrl+U
+      ) {
+        e.preventDefault();
+        alert('Inspecting is disabled!');
+      }
+    });
+  },
+};
 </script>
 
 <style scoped>
-/* Add any custom styles you need here */
+/* Optional: Prevent text selection */
+* {
+  user-select: none;
+}
 </style>
