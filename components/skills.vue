@@ -37,11 +37,11 @@
             React.JS <br />
             Vue.JS <br />
             Node.JS <br />
-            MySql.JS <br />
-            MongoDb.JS <br />
+            MySql <br />
+            MongoDB <br />
             HTML 5 <br />
-            CSS 3 <br />
-            Bootstrap 4 <br />
+            CSS/scss  <br />
+            Bootstrap  <br />
             Git
           </p>
         </div>
@@ -53,7 +53,7 @@
           <span class="w-10 h-10 bg-black rounded-full flex justify-center items-center text-white font-bold font-cursive">3</span>
           <p class="text-white text-xl font-cursive font-bold mt-4">Code Skills</p>
           <p class="text-black text-center text-sm font-cursive">
-            JavaScript <br />
+            JavaScript  <br />
             C++ <br />
             C
           </p>
