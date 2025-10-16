@@ -1,13 +1,11 @@
 <template>
     
     
-        <div class="mt-20 relative">
+       <div class="mt-0  lg:mt-20 sm:mt-0 relative">
             <Hero-section></Hero-section>
-   
 </div>
 </template>
 
- 
 <script>
 // Import AOS
 import AOS from 'aos'

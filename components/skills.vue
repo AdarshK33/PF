@@ -1,5 +1,5 @@
 <template>
-    <section class="services bg-white py-8">
+    <section class="services bg-white py-8 p-1">
       <div class="services-text mb-8">
         <p class="text-2xl font-bold text-gray-700 font-cursive">Skills</p>
         <p class="text-lg font-bold text-gray-700 font-cursive">Skills required</p>

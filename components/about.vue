@@ -22,18 +22,21 @@
       <p><span>{{ line2 }}</span><span v-if="typingStage === 4" class="cursor"></span></p>
       <p><span>{{ line3 }}</span><span v-if="typingStage === 5" class="cursor"></span></p>
 
-      <NuxtLink 
-        to="/contact" 
-        class="block px-3 py-2 bg-gray-800 text-white rounded-md text-center"
-      >
-        Hire Me
-      </NuxtLink>
+      <transition name="fade">
+        <NuxtLink 
+          v-if="showHireButton"
+          to="/contact" 
+          class="block px-3 py-2 bg-gray-800 text-white rounded-md text-center"
+        >
+          Hire Me
+        </NuxtLink>
+      </transition>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 // Full text content
 const fullAboutTitle = "About Me";
@@ -48,20 +51,36 @@ const role = ref("");
 const line1 = ref("");
 const line2 = ref("");
 const line3 = ref("");
+const typingStage = ref(0);
+const showHireButton = ref(false);
 
-const typingStage = ref(0); // Track which line is being typed
+// 🧹 To store all timeout IDs for cleanup
+const timeouts: number[] = [];
 
-// Typewriter effect helper
-function typeEffect(text: string, targetRef: any, speed = 40, delay = 0, stage: number) {
+// Typewriter effect with cleanup-safe timeout tracking
+function typeEffect(
+  text: string, 
+  targetRef: any, 
+  speed = 40, 
+  delay = 0, 
+  stage: number, 
+  onComplete?: () => void
+) {
   let i = 0;
-  setTimeout(function typeChar() {
+
+  const startTimeout = setTimeout(function typeChar() {
     typingStage.value = stage;
     if (i < text.length) {
       targetRef.value += text.charAt(i);
       i++;
-      setTimeout(typeChar, speed);
+      const inner = setTimeout(typeChar, speed);
+      timeouts.push(inner); // track inner timeout
+    } else if (onComplete) {
+      onComplete();
     }
   }, delay);
+
+  timeouts.push(startTimeout); // track outer timeout
 }
 
 onMounted(() => {
@@ -69,7 +88,18 @@ onMounted(() => {
   typeEffect(fullRole, role, 70, 800, 2);
   typeEffect(fullLine1, line1, 30, 1600, 3);
   typeEffect(fullLine2, line2, 30, 4000, 4);
-  typeEffect(fullLine3, line3, 30, 8000, 5);
+  typeEffect(fullLine3, line3, 30, 8000, 5, () => {
+    const showBtnTimeout = setTimeout(() => {
+      showHireButton.value = true;
+    }, 500);
+    timeouts.push(showBtnTimeout);
+  });
+});
+
+// 🧽 Cleanup all timeouts when component unmounts
+onBeforeUnmount(() => {
+  timeouts.forEach((t) => clearTimeout(t));
+  timeouts.length = 0; // clear the array too
 });
 </script>
 
@@ -85,5 +115,13 @@ onMounted(() => {
 
 @keyframes blink {
   50% { opacity: 0; }
+}
+
+/* Fade transition for Hire Me button */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.6s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>
