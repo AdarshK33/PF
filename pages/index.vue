@@ -13,19 +13,7 @@ export default {
     // Initialize AOS
     AOS.init();
 
-    // Disable right-click and inspect shortcuts
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-    document.addEventListener('keydown', (e) => {
-      if (
-        e.key === 'F12' || // F12
-        (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key)) || // Ctrl+Shift+I/C/J
-        (e.ctrlKey && e.key === 'U') // Ctrl+U
-      ) {
-        e.preventDefault();
-        alert('Inspecting is disabled!');
-      }
-    });
+  
   },
 };
 </script>
