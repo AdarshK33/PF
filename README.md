@@ -1,4 +1,4 @@
-<h1>Hi, I'm Adatsh kumar! <br/><a href="https://github.com/joshmadakor1">Programmer</a>, <a href="#">MERN</a>,</h1>
+<h1>Hi, I'm Adarsh kumar! <br/><a href="https://github.com/joshmadakor1">Programmer</a>, <a href="#">MERN</a>,</h1>
 
 
 
