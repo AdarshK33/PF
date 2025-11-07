@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="fixed top-0 left-0 z-50 w-full animated-saffron text-white shadow-md">
-      <nav class="flex justify-between items-center px-5 py-4">
+      <nav class="flex justify-between items-center px-5 py-7">
         <!-- Logo -->
         <a href="#" class="text-lg font-semibold font-cursive">Adarsh Creations</a>
 
