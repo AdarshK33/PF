@@ -1,5 +1,5 @@
 <template>
-    <div id="contact" class="py-16 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <div id="contact" class="py-16 px-8 bg-gradient-to-r from-blue-500 via-white-500 to-white-500 text-white">
       <h2 class="text-3xl font-bold text-center mb-4">Personal Details</h2>
       <p class="text-lg mb-6">
         DOB: {{ dobFormatted }} ({{ age }})<br />
