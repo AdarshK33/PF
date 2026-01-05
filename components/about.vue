@@ -11,16 +11,16 @@
 
     <div class="mt-4 md:mt-0 space-y-3 text-gray-700">
       <p class="text-xl font-bold text-gray-800">
-        <span>{{ aboutTitle }}</span><span v-if="typingStage === 1" class="cursor"></span>
+        <span>{{ aboutTitle }}</span><span v-if="typingStage ===1 &&  !typingDone" class="cursor"></span>
       </p>
 
       <p class="text-sm font-semibold">
-        <span>{{ role }}</span><span v-if="typingStage === 2" class="cursor"></span>
+        <span>{{ role }}</span><span v-if="typingStage === 2 && !typingDone" class="cursor"></span>
       </p>
 
-      <p><span>{{ line1 }}</span><span v-if="typingStage === 3" class="cursor"></span></p>
-      <p><span>{{ line2 }}</span><span v-if="typingStage === 4" class="cursor"></span></p>
-      <p><span>{{ line3 }}</span><span v-if="typingStage === 5" class="cursor"></span></p>
+      <p><span>{{ line1 }}</span><span v-if="typingStage === 3 && !typingDone" class="cursor"></span></p>
+      <p><span>{{ line2 }}</span><span v-if="typingStage === 4 && !typingDone" class="cursor"></span></p>
+      <p><span>{{ line3 }}</span><span v-if="typingStage === 5 && !typingDone" class="cursor"></span></p>
 
       <transition name="fade">
         <NuxtLink 
@@ -52,6 +52,7 @@ const line1 = ref("");
 const line2 = ref("");
 const line3 = ref("");
 const typingStage = ref(0);
+const typingDone = ref(false);
 const showHireButton = ref(false);
 
 // 🧹 To store all timeout IDs for cleanup
@@ -89,6 +90,7 @@ onMounted(() => {
   typeEffect(fullLine1, line1, 30, 1600, 3);
   typeEffect(fullLine2, line2, 30, 4000, 4);
   typeEffect(fullLine3, line3, 30, 8000, 5, () => {
+      typingDone.value = true; 
     const showBtnTimeout = setTimeout(() => {
       showHireButton.value = true;
     }, 500);
