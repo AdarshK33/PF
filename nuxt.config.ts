@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     'aos/dist/aos.css',
     '@fortawesome/fontawesome-free/css/all.min.css',
   ],
-  plugins: ['~/plugins/aos.js'],
+  // plugins: ['~/plugins/aos.js'],
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
 
 
