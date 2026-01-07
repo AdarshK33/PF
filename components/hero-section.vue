@@ -33,6 +33,7 @@
         <NuxtLink
           to="/contact"
           class="px-4 py-2 rounded-md border-2 border-gray-700 text-gray-700 font-semibold hover:bg-gray-700 hover:text-white transition-all"
+            @click="trackHire"
         >
           Hire Me
         </NuxtLink>
@@ -41,6 +42,7 @@
           href="/Adarsh-CV.pdf"
           download
           class="px-4 py-2 rounded-md bg-black text-white font-semibold hover:bg-gray-800 transition-all"
+           @click="trackDownloadCV"
         >
           Download CV
         </a>
@@ -51,7 +53,20 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { trackEvent, EVENTS } from "@/lib/analytics";
 
+
+
+const trackHire = () => {
+  trackEvent(EVENTS.HIRE_ME_CLICKED, {
+    common: { location: "hero-section" }
+  });
+};
+const trackDownloadCV = () => {
+  trackEvent(EVENTS.DOWNLOAD_CV_CLICKED, {
+    common: { location: "hero-section" }
+  });
+};
 // Full text
 const fullLine1 = "Hello";
 const fullLine2 = "I'M ADARSH";
