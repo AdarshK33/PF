@@ -59,12 +59,12 @@ import { trackEvent, EVENTS } from "@/lib/analytics";
 
 const trackHire = () => {
   trackEvent(EVENTS.HOME_HIRE_ME_CLICKED, {
-    common: { location: "hero-section" }
+    common: { location: "home-section" }
   });
 };
 const trackDownloadCV = () => {
   trackEvent(EVENTS.DOWNLOAD_CV_CLICKED, {
-    common: { location: "hero-section" }
+    common: { location: "home-section" }
   });
 };
 // Full text
