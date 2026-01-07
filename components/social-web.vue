@@ -1,7 +1,14 @@
 <template>
   <footer id="ContactUs" class="bg-gray-900 text-white py-6">
     <div class="container mx-auto text-center">
-      <a href="/contact-us" class="text-lg font-semibold hover:text-gray-400">Contact Us</a>
+      <a
+        href="/contact-us"
+        class="text-lg font-semibold hover:text-gray-400"
+        @click="trackContactClick"
+      >
+        Contact Us
+      </a>
+
       <p class="mt-2">
         Need to get in touch with Adarsh? <br />
         Contact through the links below!
@@ -14,6 +21,7 @@
           target="_blank"
           class="social-icon git"
           aria-label="GitHub"
+          @click="trackSocial('GitHub')"
         >
           <i class="fab fa-github"></i>
         </a>
@@ -23,6 +31,7 @@
           target="_blank"
           class="social-icon twitter"
           aria-label="Twitter"
+          @click="trackSocial('Twitter')"
         >
           <i class="fab fa-twitter"></i>
         </a>
@@ -32,6 +41,7 @@
           target="_blank"
           class="social-icon insta"
           aria-label="Instagram"
+          @click="trackSocial('Instagram')"
         >
           <i class="fab fa-instagram"></i>
         </a>
@@ -41,6 +51,7 @@
           target="_blank"
           class="social-icon linkedin"
           aria-label="LinkedIn"
+          @click="trackSocial('LinkedIn')"
         >
           <i class="fab fa-linkedin-in"></i>
         </a>
@@ -50,6 +61,7 @@
           target="_blank"
           class="social-icon gmail"
           aria-label="Email"
+          @click="trackSocial('Email')"
         >
           <i class="fas fa-envelope"></i>
         </a>
@@ -59,8 +71,25 @@
 </template>
 
 <script>
+import { trackEvent, EVENTS } from '@/lib/analytics'
+
 export default {
   name: "FooterComponent",
+  methods: {
+    trackContactClick() {
+      trackEvent(EVENTS.FOOTER_CONTACT_CLICKED, {
+        common: { location: 'footer' }
+      })
+    },
+    trackSocial(platform) {
+      trackEvent(EVENTS.FOOTER_SOCIAL_CLICKED, {
+        common: {
+          platform,
+          location: 'footer'
+        }
+      })
+    }
+  }
 };
 </script>
 
@@ -81,7 +110,7 @@ export default {
   -webkit-transform: rotate(360deg) scale(1.2);
 }
 
-/* Optional: unique Instagram color animation */
+/* Instagram */
 .insta:hover {
   color: transparent;
   background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -90,23 +119,40 @@ export default {
   transform: rotate(360deg) scale(1.3);
 }
 
-/* Optional: unique Instagram color animation */
-.twitter:hover, .linkedin:hover {
+/* Twitter + LinkedIn */
+.twitter:hover,
+.linkedin:hover {
   color: transparent;
-  background: linear-gradient(45deg, #000080, #4c85ef, #55b3e9, #88d6ee, #4f5bd5);
+  background: linear-gradient(
+    45deg,
+    #000080,
+    #4c85ef,
+    #55b3e9,
+    #88d6ee,
+    #4f5bd5
+  );
   -webkit-background-clip: text;
   background-clip: text;
   transform: rotate(360deg) scale(1.3);
 }
-/* Optional: unique Instagram color animation */
+
+/* Gmail */
 .gmail:hover {
   color: transparent;
-  background: linear-gradient(45deg, #db6f27, #fa7e1e, #d6561f, #ee2f4b, #fb8f02);
+  background: linear-gradient(
+    45deg,
+    #db6f27,
+    #fa7e1e,
+    #d6561f,
+    #ee2f4b,
+    #fb8f02
+  );
   -webkit-background-clip: text;
   background-clip: text;
   transform: rotate(360deg) scale(1.3);
 }
-/* Optional: unique Instagram color animation */
+
+/* GitHub */
 .git:hover {
   color: transparent;
   background: linear-gradient(45deg, #00000a, #00000f);

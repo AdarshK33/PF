@@ -42,7 +42,7 @@
           ✕
         </button>
 
-        <h3 class="text-xl font-bold mb-4 text-center">
+        <h3 class="text-xl font-bold mb-4 text-center"   @click="contactModal">
           Contact Me
         </h3>
 
@@ -56,8 +56,19 @@
 <script setup>
 import { ref, computed } from 'vue'
 
+import { trackEvent, EVENTS } from "@/lib/analytics";
+
+
 
 const showModal = ref(false)
+
+
+
+const contactModal = () => {
+  trackEvent(EVENTS.CONTACT_FORM_BUTTON , {
+    common: { location: "contact-us" }
+  });
+};
 
 const openModal = () => (showModal.value = true)
 const closeModal = () => (showModal.value = false)

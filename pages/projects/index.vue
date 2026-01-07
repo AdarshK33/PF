@@ -13,7 +13,7 @@
         <!-- Text -->
         <div class="lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
           <h3 class="text-2xl font-semibold text-gray-800 mb-4">
-            {{ project.title }}
+         {{index+1}}:   {{ project.title }}
           </h3>
 
           <p class="text-gray-600 mb-6">
@@ -25,7 +25,7 @@
 
           <div class="flex space-x-4">
             <button
-              @click="togglePreview(index)"
+        @click="handlePreviewClick(index, project)"
               class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
             >
               {{ activePreview == index ? 'Hide Preview' : 'Live Preview' }}
@@ -35,6 +35,7 @@
               :href="project.liveLink"
               target="_blank"
               class="px-6 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition"
+              @click="handleProjectLinkClick(project)"
             >
               Open in New Tab
             </a>
@@ -71,11 +72,38 @@
 
 <script setup>
 import { ref } from "vue";
+import { trackEvent, EVENTS } from "@/lib/analytics";
+
 
 const activePreview = ref(0);
 
 const togglePreview = (index) => {
   activePreview.value = activePreview.value === index ? null : index;
+};
+
+/* Toggle preview + track */
+const handlePreviewClick = (index, project) => {
+  activePreview.value = activePreview.value === index ? null : index;
+
+  trackEvent(EVENTS.PROJECT_LINK_CLICKED, {
+    common: {
+      action: "live_preview",
+      project_title: project.title,
+      index,
+      location: "projects"
+    }
+  });
+};
+
+/* Track open in new tab */
+const handleProjectLinkClick = (project) => {
+  trackEvent(EVENTS.PROJECT_LINK_CLICKED, {
+    common: {
+      action: "open_new_tab",
+      project_title: project.title,
+      location: "projects"
+    }
+  });
 };
 
 const projects = [

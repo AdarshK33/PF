@@ -58,7 +58,7 @@ import { trackEvent, EVENTS } from "@/lib/analytics";
 
 
 const trackHire = () => {
-  trackEvent(EVENTS.HIRE_ME_CLICKED, {
+  trackEvent(EVENTS.HOME_HIRE_ME_CLICKED, {
     common: { location: "hero-section" }
   });
 };

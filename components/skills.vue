@@ -17,7 +17,7 @@
         >
           <span class="w-10 h-10 bg-black rounded-full flex justify-center items-center text-white font-bold font-cursive">1</span>
           <p class="text-white text-xl font-cursive font-bold mt-4">Active Skills</p>
-          <p class="text-black text-center text-sm font-cursive">
+          <p class="text-white text-center text-sm font-cursive">
             Good Communication <br />
             Positive Attitude <br />
             Passionate Work <br />
@@ -32,7 +32,7 @@
         >
           <span class="w-10 h-10 bg-black rounded-full flex justify-center items-center text-white font-bold font-cursive">2</span>
           <p class="text-white text-xl font-cursive font-bold mt-4">Script Skills</p>
-          <p class="text-black text-center text-sm font-cursive">
+          <p class="text-white text-center text-sm font-cursive">
             JavaScript <br />
             React.JS <br />
             Vue.JS <br />
@@ -52,7 +52,7 @@
         >
           <span class="w-10 h-10 bg-black rounded-full flex justify-center items-center text-white font-bold font-cursive">3</span>
           <p class="text-white text-xl font-cursive font-bold mt-4">Code Skills</p>
-          <p class="text-black text-center text-sm font-cursive">
+          <p class="text-white text-center text-sm font-cursive">
             JavaScript  <br />
             C++ <br />
             C
@@ -63,14 +63,22 @@
   </template>
   
   <script>
+    import service1 from '@/assets/images/services-1.png'
+import service2 from '@/assets/images/services-2.png'
+import service3 from '@/assets/images/services-3.png'
+
   export default {
     methods: {
       setBackground(imageName) {
         return {
-        //   backgroundImage: `url('../assets/images/${imageName}.png')`,
-          backgroundImage: `url('../assets/images/${imageName}.png')`,
+
+          backgroundImage: `url(${imageName === 'services-1' ? service1 : imageName === 'services-2' ? service2 : service3})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: 'rgba(96, 165, 250, 0.3)',
+    backgroundBlendMode: 'overlay',
+      
         };
       },
     },

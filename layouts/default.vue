@@ -8,7 +8,7 @@
        <!-- https://vuetifyjs.com/en/features/application-layout/
          Navbar contains all nav components such as v-app-bar, v-system-bar, v-navigation-drawer, v-bottom-navigation -->
          <Header-nav class="fixed z-50" /> 
-        <v-main class="py-4 relative flex-1">
+        <v-main class="pt-4 relative flex-1">
          <slot >   </slot>
 
        </v-main>
